@@ -1,0 +1,38 @@
+name: labs
+
+# Runs every lab end to end, exactly as a student would, on Ubuntu 24.04.
+on:
+  push:
+  pull_request:
+
+jobs:
+  module-1:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Doctor
+        run: bash setup/doctor.sh
+
+      - name: Build the server
+        run: cd modules/module-1/scripts && python3 make_server.py
+
+      - name: Missions match the slides
+        working-directory: /home/runner/ai-server
+        run: |
+          set -e
+          du -sh * | sort -h | tail -1 | grep -q 'models'
+          grep -rn ERROR logs | grep -q 'logs/server.log:6:.*models/llama3-8b'
+          grep -n model_path configs/*.yaml | grep -q 'serve.yaml:3:.*llama3-8b'
+          [ "$(find models -name '*.safetensors' -exec sha256sum {} + | awk '{print $1}' | sort | uniq -d | wc -l)" = 1 ]
+
+      - name: Fix and score 3/3
+        working-directory: /home/runner/ai-server
+        run: |
+          sed -i 's/llama3-8b/llama-3-8b/' configs/serve.yaml
+          rm -r models/old
+          bash check_answers.sh models configs/serve.yaml models/old/llama-3-8b-backup/model.safetensors | tee out.txt
+          grep -q 'Score: 3 / 3' out.txt
+
+      - name: Reset works
+        run: cd modules/module-1/scripts && python3 make_server.py --reset
