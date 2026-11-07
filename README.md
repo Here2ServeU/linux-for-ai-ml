@@ -6,6 +6,9 @@ A hands-on course by **Emmanuel Naweji** · Transformed 2 Succeed (T2S).
 For beginners and working pros who build, train or serve AI models and want to
 stop being scared of the server underneath.
 
+📚 **Part of the T2S course library at [transformed2succeed.com/membership](https://www.transformed2succeed.com/membership).**
+Subscribe once and get access to **all** T2S courses.
+
 > File at rest. Process at work.
 > First question on any broken server: **file problem, or process problem?**
 
@@ -73,6 +76,16 @@ Finished Module 1 with **3 / 3**? Post it:
 
 > *The 4-question server checkup: `pwd` · `du -sh * | sort -h` · `grep -rn ERROR logs` · `sha256sum`.
 > I ran it on a server I'd never seen and found 3 problems. Try it.*
+
+## Get every course
+
+This repo is one course in the **Transformed 2 Succeed (T2S)** membership.
+Subscribe at **[transformed2succeed.com/membership](https://www.transformed2succeed.com/membership)** to get:
+
+- Full access to **all** T2S courses, not just this one
+- New modules and courses as they're released
+
+👉 **[Subscribe for access to all courses](https://www.transformed2succeed.com/membership)**
 
 ## License
 

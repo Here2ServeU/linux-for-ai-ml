@@ -146,3 +146,8 @@ File problem or process problem? Then `grep` the logs for `ERROR` and `ls` what 
 </details>
 
 **Next:** Module 2 reuses `du` from this lab in its pre-flight check.
+
+---
+
+📚 Part of **Linux for AI-ML Systems**, a T2S course. Subscribe at
+**[transformed2succeed.com/membership](https://www.transformed2succeed.com/membership)** for access to all courses.

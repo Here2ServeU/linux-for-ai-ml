@@ -12,3 +12,8 @@ Planned sections:
 | 03 | Stop It Safely | `kill`, signals, Ctrl-C vs `kill -9`. |
 | 04 | Keep It Running | `systemd` services, `journalctl` logs, restart on failure. |
 | 05 | Build It: Rescue a Frozen Server | Find the runaway process, free the memory, restart the service. |
+
+---
+
+📚 Part of **Linux for AI-ML Systems**, a T2S course. Subscribe at
+**[transformed2succeed.com/membership](https://www.transformed2succeed.com/membership)** for access to all courses.

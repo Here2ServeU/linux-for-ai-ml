@@ -14,3 +14,8 @@ Planned sections:
 
 Lab (planned): `scripts/make_job.py` builds a training job with three hidden
 pre-flight failures; `check_answers.sh` scores your fixes.
+
+---
+
+📚 Part of **Linux for AI-ML Systems**, a T2S course. Subscribe at
+**[transformed2succeed.com/membership](https://www.transformed2succeed.com/membership)** for access to all courses.

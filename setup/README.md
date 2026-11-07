@@ -52,3 +52,8 @@ Guide: https://canonical.com/multipass/install
 
 **Stuck for 15 minutes?** Switch to Codespaces. It runs in your browser, and the
 course works the same there.
+
+---
+
+📚 Part of **Linux for AI-ML Systems**, a T2S course. Subscribe at
+**[transformed2succeed.com/membership](https://www.transformed2succeed.com/membership)** for access to all courses.
