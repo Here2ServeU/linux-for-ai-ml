@@ -6,8 +6,8 @@ WSL runs a real Ubuntu inside Windows. It's built in and free.
 admin rights, and about 2 GB of free disk.
 No admin rights? Use [Codespaces](codespaces.md) instead.
 
-**Don't install** Python or Git for Windows for this course. You'll use the
-ones inside Ubuntu.
+> ⚠️ **Don't install Git or Python on Windows** for this course. Linux can't see
+> programs installed there. Install them inside Linux (step 3 below).
 
 ## 1. Install Ubuntu
 

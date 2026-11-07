@@ -25,11 +25,12 @@ and read it, and you can fix it.
 Run this inside your Linux shell (no Linux yet? [setup/README.md](../../setup/README.md)):
 
 ```bash
+sudo apt update && sudo apt install -y git python3   # other distros: setup/linux.md
 git clone https://github.com/Here2ServeU/linux-for-ai-ml
 cd linux-for-ai-ml && bash setup/doctor.sh
 ```
 
-Codespaces users: the repo is already cloned. Just run the doctor.
+Codespaces users: Git and Python are installed and the repo is already cloned. Just run the doctor.
 
 ### Step 2 · Build the server
 

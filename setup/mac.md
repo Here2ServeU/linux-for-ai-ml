@@ -5,9 +5,10 @@ works on Apple Silicon (M1-M4) and Intel Macs.
 
 **You need:** macOS 13 or newer, admin rights, and about 5 GB of free disk.
 
-**Don't install** Python or Git on macOS for this course. Ubuntu inside the VM
-already has them. The macOS Terminal alone won't pass the doctor, because macOS
-isn't Linux (its `sed`, `du` and `find` behave differently).
+> ⚠️ **Don't install Git or Python on macOS** for this course. Linux can't see
+> programs installed there. Install them inside Linux (step 3 below).
+> The macOS Terminal alone won't pass the doctor either: macOS isn't Linux
+> (its `sed`, `du` and `find` behave differently).
 
 ## 1. Install Multipass
 

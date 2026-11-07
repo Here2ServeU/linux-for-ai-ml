@@ -25,20 +25,44 @@ Subscribe once and get access to **all** T2S courses.
 Each module is ~45 minutes: short sections, one idea each, and a lab that
 scores you at the end.
 
+## Before you start: prerequisites
+
+Install these **in this order**. Where each one goes matters.
+
+**On your computer** (Windows / Mac / Chromebook)
+
+1. **A Linux shell.** Pick one (details in [setup/README.md](setup/README.md)):
+
+   | Your computer | Quick start | Full guide |
+   |---|---|---|
+   | Any (browser only) | This repo → **Code → Codespaces → Create** | [codespaces.md](setup/codespaces.md) |
+   | Windows | `wsl --install -d Ubuntu-24.04` | [windows.md](setup/windows.md) |
+   | Mac | `brew install --cask multipass` then `multipass launch 24.04 --name ailab` | [mac.md](setup/mac.md) |
+   | Linux | Your normal terminal | [linux.md](setup/linux.md) |
+   | Chromebook | Settings → Developers → Linux | [chromebook.md](setup/chromebook.md) |
+
+2. **VS Code** (optional): https://code.visualstudio.com. It's the only package that
+   goes on your computer. It connects to your Linux shell; each guide shows how.
+
+**Inside your Linux shell**
+
+3. **Git and Python.** Install them in step 1 below.
+
+> ⚠️ Don't install Git or Python on Windows or macOS for this course. Linux
+> can't see programs installed there, so you'd still get `command not found`.
+
 ## Start in 3 steps
 
-**1. Get a Linux shell** (pick one — details in [setup/README.md](setup/README.md))
+All commands run **inside your Linux shell**.
 
-| Your computer | Quick start | Full guide |
-|---|---|---|
-| Any (browser only) | This repo → **Code → Codespaces → Create** | [codespaces.md](setup/codespaces.md) |
-| Windows | `wsl --install -d Ubuntu-24.04` | [windows.md](setup/windows.md) |
-| Mac | `brew install --cask multipass` then `multipass launch 24.04 --name ailab` | [mac.md](setup/mac.md) |
-| Linux | Your normal terminal | [linux.md](setup/linux.md) |
-| Chromebook | Settings → Developers → Linux | [chromebook.md](setup/chromebook.md) |
+**1. Install Git and Python** (safe to run even if you already have them)
 
-No need to install Python, Git or VS Code on Windows or macOS first. They come
-with the Linux shell (VS Code is optional).
+```bash
+sudo apt update && sudo apt install -y git python3
+```
+
+Fedora, Arch or another distro? Use the command in [setup/linux.md](setup/linux.md).
+Codespaces users can skip this step.
 
 **2. Get the repo and check your machine**
 
@@ -59,7 +83,7 @@ cd ~/ai-server && cat README-FIRST.txt
 ## What you need
 
 - A Linux shell (Ubuntu 24.04 is what we test on)
-- Git and Python 3.9+ *inside* that Linux shell (already on Codespaces and Ubuntu 24.04; nothing to install on Windows/macOS)
+- Git and Python 3.9+ *inside* that Linux shell (step 1 installs them; nothing to install on Windows/macOS)
 - VS Code is optional: every lab runs in a plain terminal
 - About 1 GB free disk — labs are scaled down on purpose (1 MB here = 1 GB on a real server)
 - No GPU needed
