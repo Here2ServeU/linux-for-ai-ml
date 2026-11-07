@@ -29,9 +29,16 @@ scores you at the end.
 
 **1. Get a Linux shell** (pick one — details in [setup/README.md](setup/README.md))
 
-| Any computer | Windows | Mac |
+| Your computer | Quick start | Full guide |
 |---|---|---|
-| This repo → **Code → Codespaces → Create** | `wsl --install -d Ubuntu-24.04` | `brew install --cask multipass` then `multipass launch 24.04 --name ailab` |
+| Any (browser only) | This repo → **Code → Codespaces → Create** | [codespaces.md](setup/codespaces.md) |
+| Windows | `wsl --install -d Ubuntu-24.04` | [windows.md](setup/windows.md) |
+| Mac | `brew install --cask multipass` then `multipass launch 24.04 --name ailab` | [mac.md](setup/mac.md) |
+| Linux | Your normal terminal | [linux.md](setup/linux.md) |
+| Chromebook | Settings → Developers → Linux | [chromebook.md](setup/chromebook.md) |
+
+No need to install Python, Git or VS Code on Windows or macOS first. They come
+with the Linux shell (VS Code is optional).
 
 **2. Get the repo and check your machine**
 
@@ -52,7 +59,8 @@ cd ~/ai-server && cat README-FIRST.txt
 ## What you need
 
 - A Linux shell (Ubuntu 24.04 is what we test on)
-- Git and Python 3.9+ (already on Codespaces and Ubuntu 24.04)
+- Git and Python 3.9+ *inside* that Linux shell (already on Codespaces and Ubuntu 24.04; nothing to install on Windows/macOS)
+- VS Code is optional: every lab runs in a plain terminal
 - About 1 GB free disk — labs are scaled down on purpose (1 MB here = 1 GB on a real server)
 - No GPU needed
 

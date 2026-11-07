@@ -22,6 +22,8 @@ and read it, and you can fix it.
 
 ### Step 1 · Get the lab, check your machine
 
+Run this inside your Linux shell (no Linux yet? [setup/README.md](../../setup/README.md)):
+
 ```bash
 git clone https://github.com/Here2ServeU/linux-for-ai-ml
 cd linux-for-ai-ml && bash setup/doctor.sh
