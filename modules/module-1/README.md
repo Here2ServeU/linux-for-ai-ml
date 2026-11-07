@@ -125,6 +125,17 @@ cd ~/linux-for-ai-ml/modules/module-1/scripts && python3 make_server.py --reset
 
 Goal: solve all three in under 5 minutes.
 
+### Clean up
+
+Done with the lab? Remove the practice server (about 73 MB):
+
+```bash
+cd ~/linux-for-ai-ml/modules/module-1/scripts && python3 make_server.py --clean
+```
+
+It only deletes a folder the lab built, and refuses anything else. Built it
+somewhere else with `--dir`? Pass the same `--dir` to `--clean`.
+
 ---
 
 ## Exercises (before Module 2)

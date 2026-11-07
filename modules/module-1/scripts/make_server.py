@@ -5,6 +5,7 @@ Module 1 lab: build a small, realistic AI model server you've never seen.
     python3 make_server.py            # build ~/ai-server
     python3 make_server.py --reset    # wipe and rebuild it (practice again)
     python3 make_server.py --dir /tmp/ai-server   # build somewhere else
+    python3 make_server.py --clean    # delete it when you're done
 
 Sizes are scaled: 1 MB here stands for 1 GB on a real server.
 Everything is deterministic, so every student sees the same numbers.
@@ -139,10 +140,24 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Build the Module 1 practice server.")
     ap.add_argument("--dir", default=str(Path.home() / "ai-server"),
                     help="where to build it (default: ~/ai-server)")
-    ap.add_argument("--reset", action="store_true",
-                    help="delete the existing server and rebuild it")
+    mode = ap.add_mutually_exclusive_group()
+    mode.add_argument("--reset", action="store_true",
+                      help="delete the existing server and rebuild it")
+    mode.add_argument("--clean", action="store_true",
+                      help="delete the server and stop (clean up when you're done)")
     args = ap.parse_args()
     root = Path(args.dir).expanduser().resolve()
+
+    if args.clean:
+        if not root.exists():
+            print(f"Nothing to clean: {root} doesn't exist.")
+            return 0
+        if not (root / "README-FIRST.txt").exists():
+            print(f"Refusing to delete {root}: it doesn't look like a lab server.")
+            return 1
+        shutil.rmtree(root)
+        print(f"Removed {root}. Disk reclaimed.")
+        return 0
 
     if root.exists():
         if not args.reset:

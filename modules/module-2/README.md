@@ -15,6 +15,9 @@ Planned sections:
 Lab (planned): `scripts/make_job.py` builds a training job with three hidden
 pre-flight failures; `check_answers.sh` scores your fixes.
 
+Clean up (planned): `make_job.py --clean` removes the practice job, and any test
+secrets you exported get `unset` so they don't linger in your shell.
+
 ---
 
 📚 Part of **Linux for AI-ML Systems**, a T2S course. Subscribe at

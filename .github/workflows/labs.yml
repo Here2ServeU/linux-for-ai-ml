@@ -36,3 +36,13 @@ jobs:
 
       - name: Reset works
         run: cd modules/module-1/scripts && python3 make_server.py --reset
+
+      - name: Clean works
+        run: |
+          set -e
+          cd modules/module-1/scripts
+          mkdir -p /tmp/not-a-lab && ! python3 make_server.py --clean --dir /tmp/not-a-lab
+          [ -d /tmp/not-a-lab ]
+          python3 make_server.py --clean
+          [ ! -e /home/runner/ai-server ]
+          python3 make_server.py --clean | grep -q 'Nothing to clean'

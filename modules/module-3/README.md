@@ -13,6 +13,9 @@ Planned sections:
 | 04 | Keep It Running | `systemd` services, `journalctl` logs, restart on failure. |
 | 05 | Build It: Rescue a Frozen Server | Find the runaway process, free the memory, restart the service. |
 
+Clean up (planned): stop any lab processes still running, then `systemctl stop`,
+`systemctl disable` and remove the practice service so nothing restarts after the lab.
+
 ---
 
 📚 Part of **Linux for AI-ML Systems**, a T2S course. Subscribe at
