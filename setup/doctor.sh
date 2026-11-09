@@ -80,11 +80,11 @@ fi
 
 # 4. Core tools used in the labs
 missing=""
-for t in du df find grep sed sort head sha256sum; do
+for t in du df find grep sed sort head sha256sum stat ps pgrep; do
   command -v "$t" >/dev/null 2>&1 || missing="$missing $t"
 done
-if [ -z "$missing" ]; then ok "core tools (du df find grep sed sort head sha256sum)"
-else bad "core tools, missing:$missing" "$install coreutils findutils grep sed"; fi
+if [ -z "$missing" ]; then ok "core tools (du df find grep sed sort head sha256sum stat ps pgrep)"
+else bad "core tools, missing:$missing" "$install coreutils findutils grep sed procps"; fi
 
 # 5. Free disk in $HOME (labs need about 1 GB)
 free_kb=$(df -Pk "$HOME" | awk 'NR==2 {print $4}')

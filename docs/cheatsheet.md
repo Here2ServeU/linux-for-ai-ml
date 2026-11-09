@@ -57,3 +57,32 @@
 `/` front door · `/home` your desk · `/opt` workshop · `/etc` rule book ·
 `/var/log` diary · `/tmp` scratch paper · `/dev` devices (GPUs: `/dev/nvidia0`) ·
 `/proc` live feed
+
+## Pre-flight: disk, permissions, secrets (Module 2)
+
+| Command | What it does |
+|---|---|
+| `df -h .` | Free space on the disk you're standing on |
+| `du -sh dir/* \| sort -h` | What's filling this folder |
+| `ls -l` | Owner, group and `rwx` bits for each file |
+| `chmod 644 file` | Owner reads + writes, everyone else reads |
+| `chmod 600 .env` | Only you can read or write it (secrets) |
+| `sudo chown you:you file` | Make yourself the owner |
+| `grep -rn token configs` | Hunt for pasted secrets |
+| `export NAME=value` · `unset NAME` | Set / clear an environment variable |
+
+`rwx` = read 4 · write 2 · execute 1. Owner, group, others: `rw-r--r--` = 644.
+
+## Processes (Module 3)
+
+| Command | What it does |
+|---|---|
+| `ps aux --sort=-%cpu \| head -5` | Top CPU users |
+| `ps aux --sort=-%mem \| head -5` | Top memory users |
+| `top` (`P` CPU · `M` memory · `q` quit) | Live view |
+| `free -h` | Memory in use and free |
+| `pgrep name` · `pgrep -l name` | PID(s) of a program |
+| `ls /proc/PID` | A process is a folder in `/proc` |
+| `kill PID` | Polite stop (SIGTERM). Always try first |
+| `kill -9 PID` | Forced stop (SIGKILL). Last resort |
+| `systemctl status svc` · `journalctl -u svc -f` | A service and its live logs |

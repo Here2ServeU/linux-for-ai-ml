@@ -46,3 +46,108 @@ jobs:
           python3 make_server.py --clean
           [ ! -e /home/runner/ai-server ]
           python3 make_server.py --clean | grep -q 'Nothing to clean'
+
+  module-2:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the job
+        run: cd modules/module-2/scripts && python3 make_job.py
+
+      - name: Pre-flight says NO-GO with all three failures
+        working-directory: /home/runner/ai-job
+        run: |
+          set -e
+          ! bash preflight.sh > out.txt || exit 1
+          cat out.txt
+          grep -q 'NO-GO: 3 check' out.txt
+          du -sh scratch/* | sort -h | tail -1 | grep -q 'scratch/run-03-tmp'
+          ls -l datasets/train.jsonl | grep -q '^--w-------'
+          grep -rn token configs | grep -q '^configs/train.yaml:9:'
+
+      - name: Fix, GO and score 3/3
+        working-directory: /home/runner/ai-job
+        run: |
+          set -e
+          rm -r scratch/run-03-tmp
+          chmod 644 datasets/train.jsonl
+          grep hf_token configs/train.yaml | sed 's/hf_token: /HF_TOKEN=/' > .env
+          sed -i '/^hf_token:/d' configs/train.yaml
+          bash preflight.sh | grep -q 'chmod 600 .env'
+          chmod 600 .env
+          bash preflight.sh | tee out.txt
+          grep -q '^GO' out.txt
+          bash check_answers.sh scratch/run-03-tmp datasets/train.jsonl configs/train.yaml | tee out.txt
+          grep -q 'Score: 3 / 3' out.txt
+          grep -q 'says GO' out.txt
+
+      - name: Reset works
+        run: cd modules/module-2/scripts && python3 make_job.py --reset
+
+      - name: Clean works, even on locked folders
+        run: |
+          set -e
+          cd modules/module-2/scripts
+          chmod 000 /home/runner/ai-job/datasets /home/runner/ai-job/scratch
+          mkdir -p /tmp/not-a-lab && ! python3 make_job.py --clean --dir /tmp/not-a-lab
+          [ -d /tmp/not-a-lab ]
+          python3 make_job.py --clean
+          [ ! -e /home/runner/ai-job ]
+          python3 make_job.py --clean | grep -q 'Nothing to clean'
+
+  module-3:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start the lab
+        run: cd modules/module-3/scripts && python3 make_lab.py
+
+      - name: Missions match the README
+        working-directory: /home/runner/ai-lab
+        run: |
+          set -e
+          sleep 2
+          ps aux --sort=-%cpu | head -5
+          ps aux --sort=-%cpu | sed -n 2p | grep -q 'bin/data-loader'
+          ps aux --sort=-%mem | sed -n 2p | grep -q 'bin/cache-warmer'
+          [ "$(pgrep -x llm-serve | wc -l)" = 1 ]
+
+      - name: Polite kill, then escalate, then score 3/3
+        working-directory: /home/runner/ai-lab
+        run: |
+          set -e
+          kill $(pgrep -x data-loader)
+          kill $(pgrep -x cache-warmer)
+          sleep 1
+          ! pgrep -x data-loader || exit 1
+          pgrep -x cache-warmer
+          grep -q 'ignoring it' logs/cache-warmer.log
+          kill -9 $(pgrep -x cache-warmer)
+          sleep 1
+          bash check_answers.sh data-loader cache-warmer $(pgrep -x llm-serve) | tee out.txt
+          grep -q 'Score: 3 / 3' out.txt
+          grep -q 'without taking the model down' out.txt
+
+      - name: Grader notices a stopped model server
+        working-directory: /home/runner/ai-lab
+        run: |
+          set -e
+          kill $(pgrep -x llm-serve); sleep 1
+          bash check_answers.sh data-loader cache-warmer 1 | tee out.txt
+          grep -q 'llm-serve is DOWN' out.txt
+
+      - name: Reset and clean stop every lab process
+        run: |
+          set -e
+          cd modules/module-3/scripts
+          python3 make_lab.py --reset
+          [ "$(pgrep -x 'llm-serve|data-loader|cache-warmer' | wc -l)" = 3 ]
+          mkdir -p /tmp/not-a-lab && ! python3 make_lab.py --clean --dir /tmp/not-a-lab
+          [ -d /tmp/not-a-lab ]
+          python3 make_lab.py --clean
+          sleep 1
+          ! pgrep -x 'llm-serve|data-loader|cache-warmer' || exit 1
+          [ ! -e /home/runner/ai-lab ]
+          python3 make_lab.py --clean | grep -q 'Nothing to clean'

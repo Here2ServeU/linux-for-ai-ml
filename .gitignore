@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 ai-server/
+ai-job/
+ai-lab/
+.env
