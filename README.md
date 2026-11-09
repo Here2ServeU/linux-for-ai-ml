@@ -19,8 +19,8 @@ Subscribe once and get access to **all** T2S courses.
 | Module | Title | You'll be able to | Status |
 |:-:|---|---|:-:|
 | 1 | [The Machine Under Your Model](modules/module-1) | Walk onto a server you've never seen and find 3 problems | ✅ Ready |
-| 2 | [Feed the Model](modules/module-2) | Run a disk, permissions and secrets pre-flight before a training job | 🛠 Coming |
-| 3 | [Keep It Alive](modules/module-3) | Find, watch and stop the processes that serve your model | 🛠 Coming |
+| 2 | [Feed the Model](modules/module-2) | Run a disk, permissions and secrets pre-flight before a training job | ✅ Ready |
+| 3 | [Keep It Alive](modules/module-3) | Find, watch and stop the processes that serve your model | ✅ Ready |
 
 Each module is ~45 minutes: short sections, one idea each, and a lab that
 scores you at the end.
@@ -95,8 +95,8 @@ linux-for-ai-ml/
 ├── setup/              # doctor.sh + how to get Linux on any computer
 ├── modules/
 │   ├── module-1/       # The Machine Under Your Model (lab + guide)
-│   ├── module-2/       # Feed the Model
-│   └── module-3/       # Keep It Alive
+│   ├── module-2/       # Feed the Model (lab + guide)
+│   └── module-3/       # Keep It Alive (lab + guide)
 ├── docs/cheatsheet.md  # every command from the course on one page
 ├── .devcontainer/      # one-click Codespaces setup
 └── .github/workflows/  # CI: runs every lab end to end on Ubuntu 24.04
