@@ -95,7 +95,7 @@ linux-for-ai-ml/
 ├── setup/              # doctor.sh + how to get Linux on any computer
 ├── modules/
 │   ├── module-1/       # The Machine Under Your Model (lab + guide)
-│   ├── module-2/       # Feed the Model (lab + guide)
+│   ├── module-2/       # Feed the Model (lab + guide + workbook + slides)
 │   └── module-3/       # Keep It Alive (lab + guide)
 ├── docs/cheatsheet.md  # every command from the course on one page
 ├── .devcontainer/      # one-click Codespaces setup
