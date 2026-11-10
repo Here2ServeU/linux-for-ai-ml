@@ -16,7 +16,7 @@ Disk, permissions and secrets: a three-part pre-flight check stops that.
 
 **Your materials:** this README is the lab guide.
 [WORKBOOK.md](WORKBOOK.md) is where you write your answers as you go.
-The slides are in [slides/](slides/): the Student deck, and the Presenter deck with speaker notes.
+The slides are in [slides/](slides/) as a PDF: [Linux_AI_ML_Module_2_Student.pdf](slides/Linux_AI_ML_Module_2_Student.pdf).
 All three follow the same steps in the same order.
 
 ---
