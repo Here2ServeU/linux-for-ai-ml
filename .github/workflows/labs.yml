@@ -9,7 +9,7 @@ jobs:
   module-1:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Doctor
         run: bash setup/doctor.sh
@@ -50,7 +50,7 @@ jobs:
   module-2:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Build the job
         run: cd modules/module-2/scripts && python3 make_job.py
@@ -99,7 +99,7 @@ jobs:
   module-3:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Start the lab
         run: cd modules/module-3/scripts && python3 make_lab.py
